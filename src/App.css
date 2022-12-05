@@ -75,7 +75,6 @@ input {
   text-transform: capitalize;
   border-bottom: 0.2rem solid #15133c;
   outline: none;
-  margin: 2rem;
 }
 .pagination-btn {
   width: 100%;

@@ -3,7 +3,7 @@ import reducer from "./Reducer";
 let api = "http://hn.algolia.com/api/v1/search?";
 const initialState = {
     isLoading: true,
-    query: "css",
+    query: "",
     nbPages: 0,
     page: 0,
     hits: []
@@ -48,11 +48,24 @@ const AppProvider = ({ children }) => {
         })
     }
 
+    //pagination
+
+    const getNextPage = () => {
+        dispatch({
+            type: "NEXT_PAGE"
+        })
+    }
+    const getPrevPage = () => {
+        dispatch({
+            type: "PREVIOUS_PAGE"
+        })
+    }
+
     useEffect(() => {
         fetchApiData(`${api}query=${state.query}&page=${state.page}`);
-    }, [state.query]);
+    }, [state.query, state.page]);
     return (
-        <AppContext.Provider value={{ ...state, removePost, searchPost }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ ...state, removePost, searchPost, getPrevPage, getNextPage }}>{children}</AppContext.Provider>
     )
 }
 
