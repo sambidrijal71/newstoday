@@ -20,7 +20,6 @@ const AppProvider = ({ children }) => {
         try {
             const response = fetch(url);
             const data = await (await response).json();
-            console.log(data);
             dispatch({
                 type: "GET_STORIES",
                 payload: {
@@ -36,12 +35,24 @@ const AppProvider = ({ children }) => {
         }
 
     }
+    // remove post
+    const removePost = (post_id) => {
+        dispatch({ type: "REMOVE_POST", payload: post_id })
+    }
+
+    //search call api function
+    const searchPost = (searchQuery) => {
+        dispatch({
+            type: "SEARCH_QUERY",
+            search: searchQuery
+        })
+    }
 
     useEffect(() => {
         fetchApiData(`${api}query=${state.query}&page=${state.page}`);
-    }, []);
+    }, [state.query]);
     return (
-        <AppContext.Provider value={{ ...state }}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{ ...state, removePost, searchPost }}>{children}</AppContext.Provider>
     )
 }
 
