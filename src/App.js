@@ -1,5 +1,17 @@
 import React from 'react';
+import Pagination from './Pagination';
+import Search from './Search';
+import Stories from './Stories';
 
-const App = () => <div>News Today</div>
+const App = () => {
+    return (
+        <>
+            <div>News Today</div>
+            <Search />
+            <Pagination />
+            <Stories />
+        </>
+    )
+}
 
 export default App
