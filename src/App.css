@@ -60,6 +60,19 @@ span {
   font-weight: 400;
   font-size: 1.6em;
 }
+.removeLink {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  margin: 0 !important;
+  /*optional*/
+  font-family: arial, sans-serif;
+  /*input has OS specific font-family*/
+  color: #92b4ec;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .card-button a:last-child {
   color: red;
 }
