@@ -16,6 +16,7 @@ const AppProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
     const fetchApiData = async (url) => {
+        "unsafe_url";
         dispatch({ type: "SET_LOADING" });
         try {
             const response = fetch(url);
